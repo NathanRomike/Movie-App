@@ -54,11 +54,12 @@ public class MovieApiService {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
                 JSONObject movieJSON = new JSONObject(jsonData);
-                JSONArray resultsArray = movieJSON.getJSONArray("results:");
+                JSONArray resultsArray = movieJSON.getJSONArray("results");
                 if (resultsArray.getJSONObject(0).has("known_for")) {
                     //handle actors and directors here
-                    JSONArray knownForArray = resultsArray.getJSONObject(0).getJSONArray("known_for");
-                    movies = processArray(knownForArray);
+                    JSONArray actorMovieArray = resultsArray.getJSONObject(0).getJSONArray("known_for");
+                    movies = processArray(actorMovieArray);
+
                 } else {
                     //handle movies here
                     movies = processArray(resultsArray);
@@ -84,6 +85,7 @@ public class MovieApiService {
                 String original_language = movieJSON.getString("original_language");
                 String original_title = movieJSON.getString("original_title");
                 String overview = movieJSON.getString("overview");
+                String snippet = getSnippet(overview);
                 String release_date = movieJSON.getString("release_date");
                 String poster_path = movieJSON.getString("poster_path");
                 String popularity = movieJSON.getString("popularity");
@@ -99,7 +101,7 @@ public class MovieApiService {
                     genre_ids.add(genre_idsJSON.get(y).toString());
                 }
 
-                Movie movie = new Movie(adult, backdrop_path, movieId, original_language, original_title, overview, release_date, poster_path, popularity, title, video, vote_average, vote_count, media_type, genre_ids);
+                Movie movie = new Movie(adult, backdrop_path, movieId, original_language, original_title, overview, snippet, release_date, poster_path, popularity, title, video, vote_average, vote_count, media_type, genre_ids);
                 movies.add(movie);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -108,7 +110,15 @@ public class MovieApiService {
         return movies;
     }
 
-
+    public String getSnippet(String overview) {
+        String snippet;
+        if (overview.length() > 200) {
+            snippet = overview.substring(0, 200) + "...";
+        } else {
+            snippet = overview;
+        }
+        return snippet;
+    }
 
 }
 

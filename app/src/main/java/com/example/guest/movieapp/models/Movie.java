@@ -12,6 +12,7 @@ public class Movie {
     private String mOriginal_Language;
     private String mOriginal_Title;
     private String mOverView;
+    private String mSnippet;
     private String mReleaseDate;
     private String mPoster_Path;
     private String mPopularity;
@@ -23,13 +24,14 @@ public class Movie {
     private ArrayList<String> mGenre_Ids;
 
 
-    public Movie(String adult, String backdrop_path, String movieId, String original_language, String original_title, String overview, String release_date, String poster_path, String popularity, String title, String video, String vote_average, String vote_count, String media_type, ArrayList<String> genre_ids) {
+    public Movie(String adult, String backdrop_path, String movieId, String original_language, String original_title, String overview, String snippet, String release_date, String poster_path, String popularity, String title, String video, String vote_average, String vote_count, String media_type, ArrayList<String> genre_ids) {
         this.mAdult = adult;
         this.mBackDrop_Path = backdrop_path;
         this.mMovieId = movieId;
         this.mOriginal_Language = original_language;
         this.mOriginal_Title = original_title;
         this.mOverView = overview;
+        this.mSnippet = snippet;
         this.mReleaseDate = release_date;
         this.mPoster_Path = poster_path;
         this.mPopularity = popularity;
@@ -64,6 +66,10 @@ public class Movie {
 
     public String getOverView() {
         return mOverView;
+    }
+
+    public String getSnippet() {
+        return mSnippet;
     }
 
     public String getReleaseDate() {
