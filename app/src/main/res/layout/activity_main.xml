@@ -21,7 +21,8 @@
         android:id="@+id/searchEditText"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:hint="Search for a movie..."
+        android:hint="@string/search_for_a_movie"
+        android:textAlignment="center"
         android:textColorHint="#FFFFFF"
         android:textColor="@color/abc_primary_text_material_dark"
         android:imeActionLabel="Enter"
@@ -34,6 +35,16 @@
         android:text="Search"
         android:id="@+id/searchButton"
         android:layout_below="@+id/searchEditText"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:entries="@array/database_array"
+        android:background="#fff"
+        android:prompt="@string/database_prompt"
+        android:layout_above="@+id/searchEditText"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

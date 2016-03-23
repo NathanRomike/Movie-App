@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">MovieApp</string>
     <string name="API_KEY">92f7f95787471b5910726d48cbb534d7</string>
+    <string name="search_for_a_movie">Enter a search term</string>
+    <string name="database_prompt">Choose a database</string>
+
+    <array name="database_array">
+        <item>Movie</item>
+        <item>Actor or Director</item>
+    </array>
 </resources>
