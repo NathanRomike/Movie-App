@@ -10,6 +10,7 @@ public class Movie {
     private String mBackDrop_Path;
     private String mMovieId;
     private String mOriginal_Language;
+    private String mOriginal_Title;
     private String mOverView;
     private String mReleaseDate;
     private String mPoster_Path;
@@ -27,6 +28,7 @@ public class Movie {
         this.mBackDrop_Path = backdrop_path;
         this.mMovieId = movieId;
         this.mOriginal_Language = original_language;
+        this.mOriginal_Title = original_title;
         this.mOverView = overview;
         this.mReleaseDate = release_date;
         this.mPoster_Path = poster_path;
@@ -54,6 +56,10 @@ public class Movie {
 
     public String getOriginal_Language() {
         return mOriginal_Language;
+    }
+
+    public String getOriginal_Title() {
+        return mOriginal_Title;
     }
 
     public String getOverView() {
