@@ -41,7 +41,9 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String movieId = "";
         String actorId = "";
-        if (intent.getStringExtra("movieId").equals("")) {
+
+
+        if (intent.getStringExtra("movieId") == null) {
             actorId = intent.getStringExtra("actorId");
         } else {
             movieId = intent.getStringExtra("movieId");
