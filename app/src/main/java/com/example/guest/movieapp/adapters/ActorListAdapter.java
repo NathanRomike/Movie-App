@@ -5,6 +5,7 @@ package com.example.guest.movieapp.adapters;
  */
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.guest.movieapp.R;
 import com.example.guest.movieapp.models.Actor;
+import com.example.guest.movieapp.ui.DetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -54,17 +56,29 @@ public class ActorListAdapter extends RecyclerView.Adapter<ActorListAdapter.Acto
         @Bind(R.id.personNameTextView) TextView personNameTextView;
 
         private Context mContext;
+        private Actor mActor;
 
         public ActorViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int itemPosition = getLayoutPosition();
+                    Intent intent = new Intent(mContext, DetailActivity.class);
+                    intent.putExtra("position", itemPosition + "");
+                    intent.putExtra("actorId", mActor.getId());
+                    mContext.startActivity(intent);
+                }
+            });
         }
 
-        public void bindActor(Actor actor) {
-
+        public Actor bindActor(Actor actor) {
+            mActor = actor;
             Picasso.with(mContext).load("https://image.tmdb.org/t/p/w185/" + actor.getProfilePath()).into(personImageView);
             personNameTextView.setText(actor.getName());
+            return mActor;
         }
 
     }

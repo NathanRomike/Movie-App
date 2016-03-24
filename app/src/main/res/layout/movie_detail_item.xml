@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="7dp">
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="150dp"
-            android:id="@+id/movieImageView"
+            android:id="@+id/movieDetailImageView"
             android:src="@drawable/clacker"
             android:scaleType="centerCrop"/>
 
@@ -19,7 +21,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:background="#ffffff"
-            android:layout_height="wrap_content"
+            android:layout_height="152dp"
             android:layout_marginLeft="10dp">
 
             <LinearLayout
@@ -30,7 +32,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/movieNameTextView"
+                    android:id="@+id/movieDetailNameTextView"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:text="Movie Title"/>
@@ -38,7 +40,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/movieReleaseDateTextView"
+                    android:id="@+id/movieDetailReleaseDateTextView"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:text=" (Year)" />
@@ -47,31 +49,59 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/productionCompanyTextView"
-                android:text="Production Company"/>
+                android:id="@+id/movieDetailProductionCompanyTextView"
+                android:text="Production Company"
+                android:layout_marginTop="5dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/budgetTextView"
+                android:id="@+id/movieDetailBudgetTextView"
+                android:layout_marginTop="5dp"
                 android:text="Budget"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/revenueTextView"
+                android:id="@+id/movieDetailRevenueTextView"
+                android:layout_marginTop="5dp"
                 android:text="Revenue"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/runTimeTextView"
+                android:id="@+id/movieDetailRunTimeTextView"
+                android:layout_marginTop="5dp"
                 android:text="Running Time"/>
         </LinearLayout>
 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Synopsis:"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="0dp"/>
 
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="OVERVIEW!!!!!!!!"
+            android:id="@+id/movieDetailOverviewTextView"
+            android:paddingTop="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"/>
     </LinearLayout>
 
 </LinearLayout>

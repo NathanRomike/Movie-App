@@ -12,6 +12,9 @@ import java.util.Locale;
  */
 public class DateFormatter {
     public static String yearOnly(String date) {
-        return date.substring(0,4).toString();
+        if (date.length() > 3) {
+            return date.substring(0,4).toString();
+        }
+        return date;
     }
 }

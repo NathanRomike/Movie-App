@@ -53,7 +53,6 @@ public class MovieDetailService {
                 JSONObject movieJSON = new JSONObject(jsonData);
                 String backdropPath = movieJSON.getString("backdrop_path");
                 String budget = movieJSON.getString("budget");
-                String imdbId = movieJSON.getString("imbd_id");
                 String originalLanguage = movieJSON.getString("original_language");
                 String originalTitle = movieJSON.getString("original_title");
                 String overview = movieJSON.getString("overview");
@@ -67,29 +66,41 @@ public class MovieDetailService {
 
                 ArrayList<String> productionCompaniesArray = new ArrayList<>();
                 JSONArray productionCompaniesJSON = movieJSON.getJSONArray("production_companies");
-                for (int i = 0; i < productionCompaniesJSON.length(); i++) {
-                    productionCompaniesArray.add(productionCompaniesArray.get(i).toString());
+                if(productionCompaniesJSON.length() > 0) {
+                    for (int i = 0; i < productionCompaniesJSON.length(); i++) {
+                        String productionCompany = productionCompaniesJSON.getJSONObject(i).getString("name");
+                        productionCompaniesArray.add(productionCompany);
+                    }
                 }
 
                 ArrayList<String> genresArray = new ArrayList<>();
                 JSONArray genresJSON = movieJSON.getJSONArray("genres");
-                for (int i = 0; i < genresJSON.length(); i++) {
-                    genresArray.add(genresArray.get(i).toString());
+                if(genresJSON.length() > 0) {
+                    for (int i = 0; i < genresJSON.length(); i++) {
+                        String genre = genresJSON.getJSONObject(i).getString("name");
+                        genresArray.add(genre);
+                    }
                 }
 
                 ArrayList<String> countriesArray = new ArrayList<>();
-                JSONArray countriesJSON = movieJSON.getJSONArray("countries");
-                for (int i = 0; i < countriesJSON.length(); i++) {
-                    countriesArray.add(countriesArray.get(i).toString());
+                JSONArray countriesJSON = movieJSON.getJSONArray("production_countries");
+                if(countriesJSON.length() > 0) {
+                    for (int i = 0; i < countriesJSON.length(); i++) {
+                        String country = countriesJSON.getJSONObject(i).getString("name");
+                        countriesArray.add(country);
+                    }
                 }
 
                 ArrayList<String> spokenLanguagesArray = new ArrayList<>();
                 JSONArray spokenLanguagesJSON = movieJSON.getJSONArray("spoken_languages");
-                for (int i = 0; i < spokenLanguagesJSON.length(); i++) {
-                    spokenLanguagesArray.add(spokenLanguagesArray.get(i).toString());
+                if(spokenLanguagesJSON.length() > 0) {
+                    for (int i = 0; i < spokenLanguagesJSON.length(); i++) {
+                        String language = spokenLanguagesJSON.getJSONObject(i).getString("name");
+                        spokenLanguagesArray.add(language);
+                    }
                 }
 
-                MovieDetail movieDetail = new MovieDetail(backdropPath, budget, imdbId, originalLanguage, originalTitle, overview, poster_path, releaseDate, revenue, runTime, tagLine, title, voteAverage, productionCompaniesArray, genresArray, countriesArray, spokenLanguagesArray);
+                MovieDetail movieDetail = new MovieDetail(backdropPath, budget, originalLanguage, originalTitle, overview, poster_path, releaseDate, revenue, runTime, tagLine, title, voteAverage, productionCompaniesArray, genresArray, countriesArray, spokenLanguagesArray);
                 movieDetails.add(movieDetail);
             }
         } catch (JSONException e) {

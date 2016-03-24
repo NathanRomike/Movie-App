@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class MovieDetail {
     private String mbackDropPath;
     private String mbudget;
-    private String mImbdId;
     private String mOriginalLanguage;
     private String mOriginalTitle;
     private String mOverview;
@@ -24,10 +23,9 @@ public class MovieDetail {
     private ArrayList<String> mCountries;
     private ArrayList<String> mSpokenLanguages;
 
-    public MovieDetail(String backDropPath, String budget, String imbdId, String originalLanguage, String originalTitle, String overview, String posterPath, String releaseDate, String revenue, String runtime, String tagLine, String title, String voteAverage, ArrayList<String> productionCompanies, ArrayList<String> genres, ArrayList<String> countries, ArrayList<String> spokenLanguages) {
+    public MovieDetail(String backDropPath, String budget, String originalLanguage, String originalTitle, String overview, String posterPath, String releaseDate, String revenue, String runtime, String tagLine, String title, String voteAverage, ArrayList<String> productionCompanies, ArrayList<String> genres, ArrayList<String> countries, ArrayList<String> spokenLanguages) {
         this.mbackDropPath = backDropPath;
         this.mbudget = budget;
-        this.mImbdId = imbdId;
         this.mOriginalLanguage = originalLanguage;
         this.mOriginalTitle = originalTitle;
         this.mOverview = overview;
@@ -50,10 +48,6 @@ public class MovieDetail {
 
     public String getBudget() {
         return mbudget;
-    }
-
-    public String getImbdId() {
-        return mImbdId;
     }
 
     public String getOriginalLanguage() {
