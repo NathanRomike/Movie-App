@@ -16,8 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.ResultsActivity" />
-        <activity android:name=".ui.DetailActivity"></activity>
+        <activity android:name=".ui.ResultsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.guest.movieapp.ui.MainActivity" />
+        </activity>
+        <activity android:name=".ui.DetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.guest.movieapp.ui.DetailActivity" />
+        </activity>
     </application>
 
 </manifest>
