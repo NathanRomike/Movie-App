@@ -6,11 +6,13 @@ package com.example.guest.movieapp.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.guest.movieapp.R;
 import com.example.guest.movieapp.models.Actor;
@@ -64,5 +66,6 @@ public class ActorListAdapter extends RecyclerView.Adapter<ActorListAdapter.Acto
             Picasso.with(mContext).load("https://image.tmdb.org/t/p/w185/" + actor.getProfilePath()).into(personImageView);
             personNameTextView.setText(actor.getName());
         }
+
     }
 }

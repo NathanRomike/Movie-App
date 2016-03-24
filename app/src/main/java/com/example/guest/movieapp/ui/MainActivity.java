@@ -1,17 +1,13 @@
 package com.example.guest.movieapp.ui;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.example.guest.movieapp.R;
 
@@ -52,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         String searchInput = mSearchEditText.getText().toString();
-        Intent intent = new Intent(MainActivity.this, MoviesActivity.class);
+        Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
         intent.putExtra("searchInput", searchInput);
         intent.putExtra("spinnerCategory", this.spinnerText);
         startActivity(intent);

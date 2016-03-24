@@ -23,8 +23,8 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class MoviesActivity extends AppCompatActivity {
-    public static final String TAG = MoviesActivity.class.getSimpleName();
+public class ResultsActivity extends AppCompatActivity {
+    public static final String TAG = ResultsActivity.class.getSimpleName();
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private MovieListAdapter mMovieAdapter;
     private ActorListAdapter mActorAdapter;
@@ -60,12 +60,12 @@ public class MoviesActivity extends AppCompatActivity {
                 public void onResponse(Call call, Response response) throws IOException {
                     mMovies = movieApiService.processResults(response);
 
-                    MoviesActivity.this.runOnUiThread(new Runnable() {
+                    ResultsActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             mMovieAdapter = new MovieListAdapter(getApplicationContext(), mMovies);
                             mRecyclerView.setAdapter(mMovieAdapter);
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MoviesActivity.this);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ResultsActivity.this);
                             mRecyclerView.setLayoutManager(layoutManager);
                             mRecyclerView.setHasFixedSize(true);
                         }
@@ -85,12 +85,12 @@ public class MoviesActivity extends AppCompatActivity {
                 public void onResponse(Call call, Response response) throws IOException {
                     mActors = actorApiService.processResults(response);
 
-                    MoviesActivity.this.runOnUiThread(new Runnable() {
+                    ResultsActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             mActorAdapter = new ActorListAdapter(getApplicationContext(), mActors);
                             mRecyclerView.setAdapter(mActorAdapter);
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MoviesActivity.this);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ResultsActivity.this);
                             mRecyclerView.setLayoutManager(layoutManager);
                             mRecyclerView.setHasFixedSize(true);
                         }

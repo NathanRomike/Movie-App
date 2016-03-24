@@ -55,16 +55,7 @@ public class MovieApiService {
             if (response.isSuccessful()) {
                 JSONObject movieJSON = new JSONObject(jsonData);
                 JSONArray resultsArray = movieJSON.getJSONArray("results");
-                if (resultsArray.getJSONObject(0).has("known_for")) {
-                    //handle actors and directors here
-                    JSONArray actorMovieArray = resultsArray.getJSONObject(0).getJSONArray("known_for");
-                    movies = processArray(actorMovieArray);
-
-                } else {
-                    //handle movies here
-                    movies = processArray(resultsArray);
-                }
-                return movies;
+                return processArray(resultsArray);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -93,7 +84,6 @@ public class MovieApiService {
                 String video = movieJSON.getString("video");
                 String vote_average = movieJSON.getString("vote_average");
                 String vote_count = movieJSON.getString("vote_count");
-                String media_type = movieJSON.getString("media_type");
 
                 ArrayList<String> genre_ids = new ArrayList<>();
                 JSONArray genre_idsJSON = movieJSON.getJSONArray("genre_ids");
@@ -101,7 +91,7 @@ public class MovieApiService {
                     genre_ids.add(genre_idsJSON.get(y).toString());
                 }
 
-                Movie movie = new Movie(adult, backdrop_path, movieId, original_language, original_title, overview, snippet, release_date, poster_path, popularity, title, video, vote_average, vote_count, media_type, genre_ids);
+                Movie movie = new Movie(adult, backdrop_path, movieId, original_language, original_title, overview, snippet, release_date, poster_path, popularity, title, video, vote_average, vote_count, genre_ids);
                 movies.add(movie);
             } catch (JSONException e) {
                 e.printStackTrace();
