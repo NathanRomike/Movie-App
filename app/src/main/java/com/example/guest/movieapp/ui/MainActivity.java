@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.guest.movieapp.R;
@@ -19,6 +21,9 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     @Bind(R.id.searchEditText) EditText mSearchEditText;
     @Bind(R.id.searchButton) Button mSearchButton;
+    @Bind(R.id.spinner) Spinner mSpinner;
+    String spinnerText = "";
+
 
 
     @Override
@@ -26,6 +31,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                spinnerText = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                spinnerText = "Movie";
+            }
+        });
 
         mSearchButton.setOnClickListener(this);
 
@@ -37,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String searchInput = mSearchEditText.getText().toString();
         Intent intent = new Intent(MainActivity.this, MoviesActivity.class);
         intent.putExtra("searchInput", searchInput);
+        intent.putExtra("spinnerCategory", this.spinnerText);
         startActivity(intent);
     }
 }
-

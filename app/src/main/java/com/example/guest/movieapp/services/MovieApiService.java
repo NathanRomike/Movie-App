@@ -34,7 +34,7 @@ public class MovieApiService {
 
         OkHttpClient client = new OkHttpClient.Builder().build();
 
-        HttpUrl.Builder urlBuilder = HttpUrl.parse("http://api.themoviedb.org/3/search/multi?").newBuilder();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("http://api.themoviedb.org/3/search/movie?").newBuilder();
         urlBuilder.addQueryParameter("api_key", API_KEY);
         urlBuilder.addQueryParameter("query", searchInput);
         String url = urlBuilder.build().toString();
